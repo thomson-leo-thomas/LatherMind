@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>🧼 LatherMind - AI Soap Analysis</title>
+    <meta name="description" content="AI-powered soap analysis using machine learning and computer vision. Upload a soap image and get your Soapliness Score with TensorFlow.js and OpenCV.js.">
+    
+    <!-- Open Graph tags for social sharing -->
+    <meta property="og:title" content="🧼 LatherMind - AI Soap Analysis">
+    <meta property="og:description" content="Get your Soapliness Score using AI! Upload soap images for ML classification and computer vision analysis.">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.15.0/dist/tf.min.js"></script>
+    
+    <!-- OpenCV.js -->
+    <script async src="https://docs.opencv.org/4.8.0/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+    
+    <!-- HTML2Canvas for certificate generation -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <script>
+      // OpenCV.js initialization
+      window.onOpenCvReady = function() {
+        console.log('OpenCV.js is ready');
+        window.cvReady = true;
+        // Dispatch custom event when OpenCV is ready
+        window.dispatchEvent(new CustomEvent('opencv-ready'));
+      };
+    </script>
+    
+    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
+    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+  </body>
+</html>
