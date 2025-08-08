@@ -1,0 +1,86 @@
+LatherMind is a web app that uses Machine Learning (TensorFlow.js) and Computer Vision (OpenCV.js) to classify soap types, analyze their geometry, and calculate a Soapliness Index™ from an uploaded image or live camera feed.
+It’s a fun blend of AI + image processing with a clean, playful UI.
+
+🔗 How ML & OpenCV Work Together in This Project
+ML (Teachable Machine Model + TensorFlow.js)
+
+You will upload your metadata.json, model.json, and weights from Teachable Machine.
+
+TensorFlow.js loads this model directly in the browser.
+
+Given an image, the model predicts one of three classes:
+
+🧼 Brick of Purity – Bar Soap
+
+🧴 Potion of Cleanliness – Liquid Soap
+
+🧽 Soap Doppelgänger – Not Soap
+
+It outputs probabilities for each class, which we display in a Confidence Graph.
+
+OpenCV.js (Computer Vision Analysis)
+
+Once the image is classified, OpenCV processes it to extract measurable visual data:
+
+Color Histogram → Maps the dominant colors to our Color Interpretation Table.
+
+Canny Edge Detection → Evaluates the shape's cleanliness and symmetry.
+
+Contour Analysis → Determines smoothness or irregularity.
+
+Laplacian Variance → Measures sharpness/blur level.
+
+Each metric contributes points to the Soapliness Index™.
+
+Data Connection
+
+ML gives the what (class of soap).
+
+OpenCV gives the how it looks (color, shape, sharpness).
+
+Both feed into a scoring algorithm that:
+
+ts
+Copy
+Edit
+finalScore = classScore + colorScore + shapeScore + sharpnessScore;
+The result is displayed instantly along with:
+
+Breakdown table
+
+Live processed image views
+
+Downloadable Soapliness Certificate (HTML2Canvas)
+
+✨ Features
+🧠 ML Classification – Powered by Teachable Machine & TensorFlow.js
+
+🔍 Shape + Color Analysis – OpenCV.js live processing
+
+📊 Confidence Graph – Class probability visualization
+
+🎭 Funny Nicknames – Every soap gets a title
+
+🖼 Live Preview Panel – Original, Binary Mask, Edges, Color Histogram
+
+📄 Downloadable PNG Certificate – Shareable on WhatsApp
+
+⚡ Instant Score – Soapliness Index (0–100)
+
+🛠 Tech Stack
+Frontend
+React 18 + TypeScript – Component-based UI
+
+Vite – Fast dev server & build tool
+
+Tailwind CSS – Utility-first styling
+
+TensorFlow.js – Runs ML inference in the browser
+
+OpenCV.js – Image processing
+
+HTML2Canvas – Certificate generation
+
+Deployment
+Vercel – Zero-config React hosting with instant preview URLs
+
