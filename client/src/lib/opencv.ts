@@ -103,9 +103,8 @@ export async function analyzeImage(imageElement: HTMLImageElement | HTMLCanvasEl
       contourCount,
       shapeQuality,
       laplacianVariance,
-      sharpness,
-      edges: edgesImageData,
-      binaryMask: binaryImageData
+      edges: edgesImageData || undefined,
+      binaryMask: binaryImageData || undefined
     };
   } catch (error) {
     console.error('Error in OpenCV analysis:', error);
@@ -117,9 +116,8 @@ export async function analyzeImage(imageElement: HTMLImageElement | HTMLCanvasEl
       contourCount: 15804,
       shapeQuality: 'Smooth Outline',
       laplacianVariance: 1250.5,
-      sharpness: 'Crystal Clear',
-      edges: null,
-      binaryMask: null
+      edges: undefined,
+      binaryMask: undefined
     };
   }
 }

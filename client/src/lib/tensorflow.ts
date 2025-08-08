@@ -1,5 +1,5 @@
 import * as tf from '@tensorflow/tfjs';
-import { PredictionResult } from '../types/soap-analysis';
+import { Prediction } from '../types/soap-analysis';
 
 let model: tf.LayersModel | null = null;
 
@@ -37,7 +37,7 @@ function createMockModel(): void {
   console.log('Mock model created');
 }
 
-export async function classifyImage(imageElement: HTMLImageElement | HTMLCanvasElement): Promise<PredictionResult[]> {
+export async function classifyImage(imageElement: HTMLImageElement | HTMLCanvasElement): Promise<Prediction[]> {
   if (!model) {
     throw new Error('Model not loaded. Call loadModel() first.');
   }
@@ -59,7 +59,7 @@ export async function classifyImage(imageElement: HTMLImageElement | HTMLCanvasE
 
     // Map predictions to class names
     const classNames = ['Brick of Purity', 'Potion of Cleanliness', 'Soap Doppelgänger'];
-    const results: PredictionResult[] = classNames.map((className, index) => ({
+    const results: Prediction[] = classNames.map((className, index) => ({
       className,
       confidence: predictionData[index]
     }));

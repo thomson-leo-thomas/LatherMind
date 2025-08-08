@@ -48,7 +48,8 @@ export default function UploadSection({ onAnalysisComplete, isAnalyzing, setIsAn
         breakdown,
         finalScore,
         nickname,
-        timestamp: new Date()
+        timestamp: new Date(),
+        originalImageUrl: imageElement.src
       };
 
       onAnalysisComplete(result);
@@ -159,8 +160,10 @@ export default function UploadSection({ onAnalysisComplete, isAnalyzing, setIsAn
             stream?.getTracks().forEach(track => track.stop());
             setUsingCamera(false);
             
-            // Analyze the captured image
-            analyzeImageFile(canvas as any);
+            // Analyze the captured image  
+            const img = new Image();
+            img.onload = () => analyzeImageFile(img);
+            img.src = imageUrl;
           }
         });
       }

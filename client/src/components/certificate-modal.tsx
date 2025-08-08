@@ -13,7 +13,7 @@ export default function CertificateModal({ result, onClose }: CertificateModalPr
   const { toast } = useToast();
 
   const certificateData: CertificateData = {
-    soapImage: '', // Would be the original uploaded image
+    soapImage: result.originalImageUrl,
     class: result.breakdown.class.value,
     confidence: `${Math.round(result.topPrediction.confidence * 100)}%`,
     nickname: result.nickname,
@@ -109,8 +109,13 @@ export default function CertificateModal({ result, onClose }: CertificateModalPr
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div className="text-left">
                   <p className="text-gray-600">📸 Soap Snapshot:</p>
-                  <div className="bg-gray-100 rounded mt-2 aspect-square w-24 flex items-center justify-center">
-                    <span className="text-gray-500 text-xs">Image</span>
+                  <div className="bg-gray-100 rounded mt-2 aspect-square w-24 flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={certificateData.soapImage} 
+                      alt="Soap snapshot" 
+                      className="w-full h-full object-cover rounded"
+                      data-testid="img-certificate-soap"
+                    />
                   </div>
                 </div>
                 <div className="text-left space-y-2">

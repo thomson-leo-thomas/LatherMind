@@ -40,6 +40,7 @@ export interface AnalysisResult {
   finalScore: number;
   nickname: string;
   timestamp: Date;
+  originalImageUrl: string;
 }
 
 export interface CertificateData {

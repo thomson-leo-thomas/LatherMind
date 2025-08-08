@@ -100,11 +100,16 @@ export default function ResultsSection({ result, onGenerateCertificate, onAnalyz
           </h3>
           
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* Original Image - placeholder since we don't store it */}
+            {/* Original Image */}
             <div className="text-center">
               <h4 className="text-sm font-medium text-gray-700 mb-2">Original Image</h4>
-              <div className="bg-gray-100 rounded-lg p-3 aspect-square flex items-center justify-center">
-                <span className="text-gray-500 text-sm">Original</span>
+              <div className="bg-gray-100 rounded-lg p-3 aspect-square flex items-center justify-center overflow-hidden">
+                <img 
+                  src={result.originalImageUrl} 
+                  alt="Original soap" 
+                  className="max-w-full max-h-full object-cover rounded"
+                  data-testid="img-original-soap"
+                />
               </div>
             </div>
 
