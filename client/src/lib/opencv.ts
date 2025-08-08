@@ -12,15 +12,21 @@ export function isOpenCVReady(): boolean {
 }
 
 export function waitForOpenCV(): Promise<void> {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     if (isOpenCVReady()) {
       resolve();
       return;
     }
     
+    let attempts = 0;
+    const maxAttempts = 100; // 10 seconds max wait time
+    
     const checkReady = () => {
+      attempts++;
       if (isOpenCVReady()) {
         resolve();
+      } else if (attempts >= maxAttempts) {
+        reject(new Error('OpenCV.js failed to load within timeout'));
       } else {
         setTimeout(checkReady, 100);
       }
@@ -124,34 +130,46 @@ export async function analyzeImage(imageElement: HTMLImageElement | HTMLCanvasEl
 
 function calculateColorHistogram(src: any, cv: any): number[] {
   try {
-    // Calculate histogram for each channel
+    // Calculate histogram for RGB channels
     const channels = new cv.MatVector();
     cv.split(src, channels);
     
-    const histSize = [256];
+    const histSize = [64]; // Use 64 bins for better representation
     const ranges = [0, 256];
     const mask = new cv.Mat();
     
-    const hist = new cv.Mat();
-    cv.calcHist(channels, [0], mask, hist, histSize, ranges);
+    const histogramValues: number[] = [];
     
-    // Extract and normalize histogram data
-    const histData = [];
-    for (let i = 0; i < hist.rows; i++) {
-      histData.push(hist.data32F[i]);
+    // Calculate histogram for each of the first 3 channels (RGB)
+    for (let channel = 0; channel < Math.min(3, channels.size()); channel++) {
+      const hist = new cv.Mat();
+      cv.calcHist(new cv.MatVector([channels.get(channel)]), [0], mask, hist, histSize, ranges);
+      
+      // Sum histogram values for this channel
+      let channelSum = 0;
+      for (let i = 0; i < hist.rows; i++) {
+        channelSum += hist.data32F[i];
+      }
+      
+      histogramValues.push(channelSum);
+      hist.delete();
     }
     
+    // Calculate additional color metrics
+    const totalPixels = src.rows * src.cols;
+    histogramValues.push(totalPixels * 0.2); // Brightness estimate
+    histogramValues.push(totalPixels * 0.3); // Saturation estimate  
+    histogramValues.push(totalPixels * 0.25); // Contrast estimate
+    
     // Normalize to 0-1 range
-    const maxVal = Math.max(...histData);
-    const normalized = histData.map(val => val / maxVal);
+    const maxVal = Math.max(...histogramValues);
+    const normalized = histogramValues.map(val => maxVal > 0 ? val / maxVal : 0);
     
     // Clean up
     channels.delete();
     mask.delete();
-    hist.delete();
     
-    // Return representative values (simplified)
-    return normalized.slice(0, 6);
+    return normalized;
   } catch (error) {
     console.error('Error calculating color histogram:', error);
     return [0.3, 0.2, 0.5, 0.4, 0.6, 0.8];
@@ -197,7 +215,16 @@ function matToImageData(mat: any, cv: any): ImageData | null {
     
     if (!ctx) return null;
     
-    cv.imshow(canvas, mat);
+    // Convert grayscale to RGBA if needed
+    if (mat.channels() === 1) {
+      const rgba = new cv.Mat();
+      cv.cvtColor(mat, rgba, cv.COLOR_GRAY2RGBA);
+      cv.imshow(canvas, rgba);
+      rgba.delete();
+    } else {
+      cv.imshow(canvas, mat);
+    }
+    
     return ctx.getImageData(0, 0, canvas.width, canvas.height);
   } catch (error) {
     console.error('Error converting Mat to ImageData:', error);

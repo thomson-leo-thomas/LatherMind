@@ -101,7 +101,7 @@ export default function ResultsSection({ result, onGenerateCertificate, onAnalyz
             <i className="fas fa-search text-secondary mr-3"></i>Image Processing Analysis
           </h3>
           
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Original Image */}
             <div className="text-center">
               <h4 className="text-sm font-medium text-gray-700 mb-2">Original Image</h4>
@@ -121,9 +121,10 @@ export default function ResultsSection({ result, onGenerateCertificate, onAnalyz
               <div className="bg-gray-900 rounded-lg p-3 aspect-square flex items-center justify-center">
                 {openCVAnalysis.binaryMask ? (
                   <canvas 
-                    width={100} 
-                    height={100}
-                    className="max-w-full max-h-full"
+                    width={openCVAnalysis.binaryMask.width} 
+                    height={openCVAnalysis.binaryMask.height}
+                    className="max-w-full max-h-full object-contain"
+                    data-testid="canvas-binary-mask"
                     ref={(canvas) => {
                       if (canvas && openCVAnalysis.binaryMask) {
                         const ctx = canvas.getContext('2d');
@@ -145,9 +146,10 @@ export default function ResultsSection({ result, onGenerateCertificate, onAnalyz
               <div className="bg-gray-900 rounded-lg p-3 aspect-square flex items-center justify-center">
                 {openCVAnalysis.edges ? (
                   <canvas 
-                    width={100} 
-                    height={100}
-                    className="max-w-full max-h-full"
+                    width={openCVAnalysis.edges.width} 
+                    height={openCVAnalysis.edges.height}
+                    className="max-w-full max-h-full object-contain"
+                    data-testid="canvas-canny-edges"
                     ref={(canvas) => {
                       if (canvas && openCVAnalysis.edges) {
                         const ctx = canvas.getContext('2d');
@@ -167,16 +169,19 @@ export default function ResultsSection({ result, onGenerateCertificate, onAnalyz
             <div className="text-center">
               <h4 className="text-sm font-medium text-gray-700 mb-2">Color Histogram</h4>
               <div className="bg-gray-100 rounded-lg p-3 aspect-square flex items-end justify-center">
-                <div className="flex items-end space-x-1 h-full">
-                  {openCVAnalysis.colorHistogram.slice(0, 4).map((value, index) => (
+                <div className="flex items-end space-x-1 h-full w-full max-w-20" data-testid="color-histogram">
+                  {openCVAnalysis.colorHistogram.slice(0, 6).map((value, index) => (
                     <div 
                       key={index}
-                      className={`w-2 ${
-                        index === 0 ? 'bg-red-400' :
-                        index === 1 ? 'bg-green-400' :
-                        index === 2 ? 'bg-blue-500' : 'bg-yellow-400'
+                      className={`flex-1 min-h-[4px] ${
+                        index === 0 ? 'bg-red-500' :
+                        index === 1 ? 'bg-green-500' :
+                        index === 2 ? 'bg-blue-500' : 
+                        index === 3 ? 'bg-yellow-500' :
+                        index === 4 ? 'bg-purple-500' : 'bg-orange-500'
                       }`}
-                      style={{ height: `${value * 100}%` }}
+                      style={{ height: `${Math.max(value * 100, 4)}%` }}
+                      title={`Channel ${index + 1}: ${Math.round(value * 100)}%`}
                     />
                   ))}
                 </div>
