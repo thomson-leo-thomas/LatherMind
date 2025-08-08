@@ -1,0 +1,741 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧼 LatherMind - AI Soap Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['Inter', 'system-ui', 'sans-serif'],
+                },
+                colors: {
+                    primary: {
+                        50: '#eff6ff',
+                        500: '#2563eb',
+                        600: '#1d4ed8',
+                        700: '#1e40af'
+                    },
+                    secondary: {
+                        500: '#06b6d4',
+                        600: '#0891b2'
+                    },
+                    accent: {
+                        500: '#f59e0b',
+                        600: '#d97706'
+                    }
+                }
+            }
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-cyan-50 min-h-screen">
+    <!-- @COMPONENT: Header -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-gradient-to-r from-primary-500 to-secondary-500 p-2 rounded-xl">
+                        <i class="fas fa-soap text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">LatherMind</h1>
+                        <p class="text-sm text-gray-600">Advancing civilization, one bar at a time</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <button class="text-gray-600 hover:text-primary-500 transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </button>
+                    <button class="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-share-alt mr-2"></i>Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- @COMPONENT: HeroSection -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                AI-Powered Soap Analysis
+            </h2>
+            <p class="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
+                The world can 3D print organs… but still can't judge your soap. Upload a photo and get your Soapliness Score in seconds using ML classification and computer vision.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-500 mb-8">
+                <span class="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
+                    <i class="fas fa-brain text-primary-500 mr-2"></i>ML Classification
+                </span>
+                <span class="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
+                    <i class="fas fa-search text-secondary-500 mr-2"></i>OpenCV Analysis
+                </span>
+                <span class="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
+                    <i class="fas fa-chart-bar text-accent-500 mr-2"></i>Soapliness Index
+                </span>
+                <span class="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
+                    <i class="fas fa-certificate text-green-500 mr-2"></i>Certificate
+                </span>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: HeroSection -->
+
+        <!-- @COMPONENT: UploadSection -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Upload Area -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Upload Your Soap</h3>
+                    
+                    <!-- Drag and Drop Area -->
+                    <div class="border-2 border-dashed border-gray-300 rounded-xl p-12 text-center hover:border-primary-400 transition-colors cursor-pointer bg-gray-50 hover:bg-gray-100" data-implementation="File drop zone with drag/drop support">
+                        <div class="mb-4">
+                            <i class="fas fa-cloud-upload-alt text-6xl text-gray-400"></i>
+                        </div>
+                        <h4 class="text-xl font-medium text-gray-700 mb-2">Drop your soap image here</h4>
+                        <p class="text-gray-500 mb-4">or click to browse files</p>
+                        <div class="flex justify-center gap-4">
+                            <button class="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-lg transition-colors flex items-center">
+                                <i class="fas fa-camera mr-2"></i>Upload Photo
+                            </button>
+                            <button class="bg-secondary-500 hover:bg-secondary-600 text-white px-6 py-3 rounded-lg transition-colors flex items-center">
+                                <i class="fas fa-video mr-2"></i>Use Camera
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Image Preview -->
+                    <div class="mt-6 hidden" id="imagePreview" data-implementation="Show after image upload">
+                        <h4 class="text-lg font-medium text-gray-900 mb-3">Uploaded Image</h4>
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <!-- A close-up photo of a blue bar of soap on a clean white surface -->
+                            <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Uploaded soap image" class="w-full h-64 object-cover rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Info Panel -->
+            <div class="space-y-6">
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-info-circle text-primary-500 mr-2"></i>How It Works
+                    </h4>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <span class="bg-primary-100 text-primary-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-medium mr-3 mt-0.5">1</span>
+                            <span>Upload or capture soap image</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-primary-100 text-primary-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-medium mr-3 mt-0.5">2</span>
+                            <span>AI classifies soap type with confidence</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-primary-100 text-primary-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-medium mr-3 mt-0.5">3</span>
+                            <span>OpenCV analyzes color, shape & sharpness</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-primary-100 text-primary-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-medium mr-3 mt-0.5">4</span>
+                            <span>Get your Soapliness Score & certificate</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-r from-accent-400 to-orange-400 rounded-2xl shadow-lg p-6 text-white">
+                    <h4 class="text-lg font-semibold mb-2 flex items-center">
+                        <i class="fas fa-star mr-2"></i>Soap Classes
+                    </h4>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-center justify-between">
+                            <span>🧼 Brick of Purity</span>
+                            <span class="font-medium">Bar Soap</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span>🧴 Potion of Cleanliness</span>
+                            <span class="font-medium">Liquid Soap</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span>🧽 Soap Doppelgänger</span>
+                            <span class="font-medium">Not Soap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: UploadSection -->
+
+        <!-- @COMPONENT: ResultsSection -->
+        <div class="space-y-8" id="resultsSection" data-implementation="Show after analysis is complete">
+            <!-- ML Classification Results -->
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-brain text-primary-500 mr-3"></i>ML Classification Results
+                </h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Predicted Class -->
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-700 mb-4">Predicted Class</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-4 bg-green-50 border border-green-200 rounded-lg">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🧼</span>
+                                    <span class="font-medium text-green-800" data-bind="prediction.class">Brick of Purity</span>
+                                </div>
+                                <span class="text-green-600 font-semibold" data-bind="prediction.confidence">84%</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                                <div class="flex items-center">
+                                    <span class="text-xl mr-3">🧴</span>
+                                    <span class="text-gray-600">Potion of Cleanliness</span>
+                                </div>
+                                <span class="text-gray-500">9%</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                                <div class="flex items-center">
+                                    <span class="text-xl mr-3">🧽</span>
+                                    <span class="text-gray-600">Soap Doppelgänger</span>
+                                </div>
+                                <span class="text-gray-500">7%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Confidence Graph -->
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-700 mb-4">Confidence Graph</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>🧼 Brick of Purity</span>
+                                    <span class="font-medium">84%</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-3">
+                                    <div class="bg-green-500 h-3 rounded-full" style="width: 84%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>🧴 Potion of Cleanliness</span>
+                                    <span class="font-medium">9%</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-3">
+                                    <div class="bg-blue-500 h-3 rounded-full" style="width: 9%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>🧽 Soap Doppelgänger</span>
+                                    <span class="font-medium">7%</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-3">
+                                    <div class="bg-orange-500 h-3 rounded-full" style="width: 7%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Processing Panel -->
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-search text-secondary-500 mr-3"></i>Image Processing Analysis
+                </h3>
+                
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Original Image -->
+                    <div class="text-center">
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Original Image</h4>
+                        <div class="bg-gray-100 rounded-lg p-3 aspect-square">
+                            <!-- A blue bar of soap photographed from above on white background -->
+                            <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200" alt="Original soap image" class="w-full h-full object-cover rounded">
+                        </div>
+                    </div>
+
+                    <!-- Binary Mask -->
+                    <div class="text-center">
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Binary Mask</h4>
+                        <div class="bg-gray-900 rounded-lg p-3 aspect-square flex items-center justify-center">
+                            <div class="bg-white rounded-lg w-3/4 h-3/4" data-implementation="OpenCV binary threshold result"></div>
+                        </div>
+                    </div>
+
+                    <!-- Canny Edges -->
+                    <div class="text-center">
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Canny Edges</h4>
+                        <div class="bg-gray-900 rounded-lg p-3 aspect-square flex items-center justify-center">
+                            <div class="border-2 border-white rounded-lg w-3/4 h-3/4" data-implementation="OpenCV edge detection result"></div>
+                        </div>
+                    </div>
+
+                    <!-- Color Histogram -->
+                    <div class="text-center">
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Color Histogram</h4>
+                        <div class="bg-gray-100 rounded-lg p-3 aspect-square flex items-end justify-center">
+                            <div class="flex items-end space-x-1 h-full">
+                                <div class="bg-red-400 w-2" style="height: 60%"></div>
+                                <div class="bg-green-400 w-2" style="height: 80%"></div>
+                                <div class="bg-blue-500 w-2" style="height: 100%"></div>
+                                <div class="bg-yellow-400 w-2" style="height: 40%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soapliness Index Breakdown -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Score Breakdown -->
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
+                        <i class="fas fa-chart-line text-accent-500 mr-3"></i>Soapliness Index™ Breakdown
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div>
+                                <span class="text-sm text-gray-600">Class</span>
+                                <p class="font-medium" data-bind="analysis.class">Brick of Purity</p>
+                            </div>
+                            <span class="text-2xl font-bold text-green-600" data-bind="scores.class">+30</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div>
+                                <span class="text-sm text-gray-600">Color</span>
+                                <p class="font-medium" data-bind="analysis.color">Bright Blue</p>
+                            </div>
+                            <span class="text-2xl font-bold text-blue-600" data-bind="scores.color">+15</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div>
+                                <span class="text-sm text-gray-600">Shape</span>
+                                <p class="font-medium" data-bind="analysis.shape">Smooth Outline</p>
+                            </div>
+                            <span class="text-2xl font-bold text-purple-600" data-bind="scores.shape">+10</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div>
+                                <span class="text-sm text-gray-600">Sharpness</span>
+                                <p class="font-medium" data-bind="analysis.sharpness">Crystal Clear</p>
+                            </div>
+                            <span class="text-2xl font-bold text-orange-600" data-bind="scores.sharpness">+5</span>
+                        </div>
+                        
+                        <div class="border-t pt-4">
+                            <div class="flex items-center justify-between p-4 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg text-white">
+                                <span class="text-lg font-semibold">Final Score</span>
+                                <span class="text-3xl font-bold" data-bind="finalScore">60</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soap Profile Card -->
+                <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-lg text-white p-8">
+                    <div class="text-center mb-6">
+                        <div class="bg-white/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-4xl">🧼</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2" data-bind="soapNickname">Slippy Suddington</h3>
+                        <p class="text-blue-100">The Purifying Legend</p>
+                    </div>
+                    
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-blue-200">Contours Detected:</span>
+                            <span class="font-medium" data-bind="contours">15,804</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-blue-200">Dominant Color:</span>
+                            <span class="font-medium" data-bind="dominantColor">Cyanish Blue</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-blue-200">Shape Quality:</span>
+                            <span class="font-medium" data-bind="shapeQuality">Sacred Formation</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-blue-200">Confidence Level:</span>
+                            <span class="font-medium" data-bind="confidence">84%</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-white text-blue-600 py-3 rounded-lg font-semibold mt-6 hover:bg-blue-50 transition-colors flex items-center justify-center" data-event="click:generateCertificate">
+                        <i class="fas fa-certificate mr-2"></i>Generate Certificate
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-lg transition-colors flex items-center justify-center" data-event="click:downloadPNG">
+                    <i class="fas fa-download mr-2"></i>Download PNG Certificate
+                </button>
+                <button class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg transition-colors flex items-center justify-center" data-event="click:shareWhatsApp">
+                    <i class="fab fa-whatsapp mr-2"></i>Share on WhatsApp
+                </button>
+                <button class="bg-gray-500 hover:bg-gray-600 text-white px-8 py-3 rounded-lg transition-colors flex items-center justify-center" data-event="click:analyzeAnother">
+                    <i class="fas fa-redo mr-2"></i>Analyze Another Soap
+                </button>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: ResultsSection -->
+
+        <!-- @COMPONENT: InterpretationTables -->
+        <div class="mt-16 space-y-8">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Scoring Methodology</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Class Interpretation -->
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-tags text-primary-500 mr-2"></i>Class Interpretation
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="text-left p-3 font-medium text-gray-700">Class</th>
+                                    <th class="text-left p-3 font-medium text-gray-700">Interpretation</th>
+                                    <th class="text-right p-3 font-medium text-gray-700">Score</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="p-3">🧼 Brick of Purity</td>
+                                    <td class="p-3">Bar Soap</td>
+                                    <td class="p-3 text-right font-medium text-green-600">+30</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">🧴 Potion of Cleanliness</td>
+                                    <td class="p-3">Liquid Soap</td>
+                                    <td class="p-3 text-right font-medium text-blue-600">+25</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">🧽 Soap Doppelgänger</td>
+                                    <td class="p-3">Not Soap (Imposter!)</td>
+                                    <td class="p-3 text-right font-medium text-red-600">+0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Color Interpretation -->
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-palette text-secondary-500 mr-2"></i>Color Interpretation
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="text-left p-3 font-medium text-gray-700">Color Range</th>
+                                    <th class="text-left p-3 font-medium text-gray-700">Interpretation</th>
+                                    <th class="text-right p-3 font-medium text-gray-700">Score</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="p-3">Bright Blue/White</td>
+                                    <td class="p-3">Cosmically Pure</td>
+                                    <td class="p-3 text-right font-medium text-green-600">+20</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">Light Pink/Yellow</td>
+                                    <td class="p-3">Spiritually Acceptable</td>
+                                    <td class="p-3 text-right font-medium text-yellow-600">+15</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">Grey/Dull</td>
+                                    <td class="p-3">Mundane & Earthly</td>
+                                    <td class="p-3 text-right font-medium text-gray-600">+10</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">Muddy/Dark</td>
+                                    <td class="p-3">Soap of the Underworld</td>
+                                    <td class="p-3 text-right font-medium text-red-600">+0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Shape Interpretation -->
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-shapes text-purple-500 mr-2"></i>Shape Interpretation
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="text-left p-3 font-medium text-gray-700">Detected Shape</th>
+                                    <th class="text-left p-3 font-medium text-gray-700">Interpretation</th>
+                                    <th class="text-right p-3 font-medium text-gray-700">Score</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="p-3">Smooth Solid Contours</td>
+                                    <td class="p-3">Sacredly Formed</td>
+                                    <td class="p-3 text-right font-medium text-green-600">+20</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">Wobbly/Irregular Edge</td>
+                                    <td class="p-3">Spiritually Incomplete</td>
+                                    <td class="p-3 text-right font-medium text-yellow-600">+10</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">Fragmented/No Shape</td>
+                                    <td class="p-3">Chaotic Foam Entity</td>
+                                    <td class="p-3 text-right font-medium text-red-600">+0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Sharpness Interpretation -->
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-eye text-accent-500 mr-2"></i>Sharpness (Laplacian Variance)
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="text-left p-3 font-medium text-gray-700">Value Level</th>
+                                    <th class="text-left p-3 font-medium text-gray-700">Interpretation</th>
+                                    <th class="text-right p-3 font-medium text-gray-700">Score</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="p-3">High (>1000)</td>
+                                    <td class="p-3">Crystal Clear</td>
+                                    <td class="p-3 text-right font-medium text-green-600">+10</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">Medium (100-1000)</td>
+                                    <td class="p-3">Slightly Fogged</td>
+                                    <td class="p-3 text-right font-medium text-yellow-600">+5</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">Low (<100)</td>
+                                    <td class="p-3">Fuzzy Suds</td>
+                                    <td class="p-3 text-right font-medium text-red-600">+0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: InterpretationTables -->
+    </main>
+
+    <!-- @COMPONENT: CertificateModal -->
+    <div id="certificateModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden" data-implementation="Show when certificate is generated">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-screen overflow-y-auto">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-900">Soapliness Certificate</h3>
+                    <button class="text-gray-400 hover:text-gray-600" data-event="click:closeCertificate">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Certificate Design -->
+                <div id="certificate" class="bg-gradient-to-br from-blue-50 to-purple-50 border-4 border-primary-500 rounded-xl p-8 text-center">
+                    <div class="mb-6">
+                        <div class="bg-primary-500 text-white p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-soap text-2xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-primary-600 mb-2">🧼 SOAPLINESS CERTIFICATE</h2>
+                        <p class="text-gray-600">© 2025 LatherMind</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 mb-6 border border-gray-200">
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="text-left">
+                                <p class="text-gray-600">📸 Soap Snapshot:</p>
+                                <div class="bg-gray-100 rounded mt-2 aspect-square w-24">
+                                    <!-- Thumbnail of analyzed soap -->
+                                    <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100" alt="Soap thumbnail" class="w-full h-full object-cover rounded">
+                                </div>
+                            </div>
+                            <div class="text-left space-y-2">
+                                <p><span class="text-gray-600">🔤 Class:</span> <span class="font-medium" data-bind="cert.class">Brick of Purity</span></p>
+                                <p><span class="text-gray-600">💯 Certainty:</span> <span class="font-medium" data-bind="cert.confidence">84%</span></p>
+                                <p><span class="text-gray-600">🏷️ Title:</span> <span class="font-medium" data-bind="cert.nickname">Slippy Suddington</span></p>
+                                <p><span class="text-gray-600">📊 Soapliness Index™:</span> <span class="font-bold text-primary-600 text-xl" data-bind="cert.score">60.0</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 mb-6 border border-gray-200">
+                        <h4 class="font-semibold text-gray-800 mb-3">🔍 ANALYSIS BREAKDOWN</h4>
+                        <div class="grid grid-cols-2 gap-2 text-sm text-left">
+                            <p><span class="text-gray-600">🎨 Dominant Color:</span> <span data-bind="cert.color">Bright Blue</span></p>
+                            <p><span class="text-gray-600">🧪 Detected Shape:</span> <span data-bind="cert.shape">Smooth Outline</span></p>
+                            <p><span class="text-gray-600">📈 Contours:</span> <span data-bind="cert.contours">15,804</span></p>
+                            <p><span class="text-gray-600">📉 Sharpness:</span> <span data-bind="cert.sharpness">Crystal Clear</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-lg p-6 mb-6">
+                        <h4 class="font-bold text-lg mb-2">FINAL SOAPLINESS INDEX™</h4>
+                        <p class="text-4xl font-bold">🧼 <span data-bind="cert.finalScore">60.0</span> / 100.0 🧼</p>
+                    </div>
+                    
+                    <div class="text-xs text-gray-500 border-t pt-4">
+                        <p>© 2025 LatherMind — Certificate of Cleanliness</p>
+                        <p>Officially audited by the Soapliness Authority™.</p>
+                        <p>Made with love, bubbles, and client-side code — proudly created by Thomson.</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4 mt-6">
+                    <button class="flex-1 bg-primary-500 hover:bg-primary-600 text-white py-3 rounded-lg transition-colors flex items-center justify-center" data-event="click:downloadCertificate">
+                        <i class="fas fa-download mr-2"></i>Download PNG
+                    </button>
+                    <button class="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg transition-colors flex items-center justify-center" data-event="click:shareCertificate">
+                        <i class="fab fa-whatsapp mr-2"></i>Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: CertificateModal -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="bg-gray-900 text-white mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="bg-gradient-to-r from-primary-500 to-secondary-500 p-2 rounded-xl">
+                            <i class="fas fa-soap text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">LatherMind</h3>
+                            <p class="text-gray-400 text-sm">Advancing civilization, one bar at a time</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        AI-powered soap analysis using machine learning and computer vision. 
+                        Get your Soapliness Score and celebrate the art of cleanliness.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Technology</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li>TensorFlow.js</li>
+                        <li>OpenCV.js</li>
+                        <li>React + TypeScript</li>
+                        <li>Tailwind CSS</li>
+                        <li>Vercel Deployment</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">API Documentation</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Setup Guide</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">GitHub Repository</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2025 LatherMind. Made with love, bubbles, and client-side code — proudly created by Thomson.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        (function() {
+            // TODO: Implement TensorFlow.js model loading and inference
+            // TODO: Implement OpenCV.js image processing functions
+            // TODO: Implement camera access and image capture
+            // TODO: Implement file upload handling
+            // TODO: Implement scoring algorithm calculations
+            // TODO: Implement HTML2Canvas certificate generation
+            // TODO: Implement WhatsApp sharing functionality
+            
+            // Demo interaction handlers for mockup
+            const uploadArea = document.querySelector('[data-implementation*="File drop zone"]');
+            const resultsSection = document.getElementById('resultsSection');
+            const certificateModal = document.getElementById('certificateModal');
+            
+            // Simulate image upload and analysis
+            if (uploadArea) {
+                uploadArea.addEventListener('click', function() {
+                    // Simulate analysis completion
+                    setTimeout(() => {
+                        if (resultsSection) {
+                            resultsSection.style.display = 'block';
+                            resultsSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }, 2000);
+                });
+            }
+            
+            // Certificate modal handling
+            const generateCertBtn = document.querySelector('[data-event="click:generateCertificate"]');
+            const closeCertBtn = document.querySelector('[data-event="click:closeCertificate"]');
+            
+            if (generateCertBtn) {
+                generateCertBtn.addEventListener('click', function() {
+                    if (certificateModal) {
+                        certificateModal.classList.remove('hidden');
+                    }
+                });
+            }
+            
+            if (closeCertBtn) {
+                closeCertBtn.addEventListener('click', function() {
+                    if (certificateModal) {
+                        certificateModal.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Close modal on backdrop click
+            if (certificateModal) {
+                certificateModal.addEventListener('click', function(e) {
+                    if (e.target === certificateModal) {
+                        certificateModal.classList.add('hidden');
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
