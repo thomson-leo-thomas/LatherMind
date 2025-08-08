@@ -1,6 +1,6 @@
-import { SoapClass, PredictionResult, OpenCVAnalysis, SoaplinessBreakdown } from '../types/soap-analysis';
+import { Prediction, OpenCVAnalysis, ScoreBreakdown } from '../types/soap-analysis';
 
-export const SOAP_CLASSES: SoapClass[] = [
+export const SOAP_CLASSES = [
   {
     id: 'brick_of_purity',
     name: 'Brick of Purity',
@@ -103,9 +103,9 @@ function classifySharpness(laplacianVariance: number): string {
 }
 
 export function calculateSoaplinessScore(
-  topPrediction: PredictionResult,
+  topPrediction: Prediction,
   analysis: OpenCVAnalysis
-): { breakdown: SoaplinessBreakdown; finalScore: number; nickname: string } {
+): { breakdown: ScoreBreakdown; finalScore: number; nickname: string } {
   // Find the soap class
   const soapClass = SOAP_CLASSES.find(c => 
     c.name.toLowerCase().includes(topPrediction.className.toLowerCase()) ||
@@ -118,25 +118,21 @@ export function calculateSoaplinessScore(
   const sharpnessLevel = classifySharpness(analysis.laplacianVariance);
 
   // Build breakdown
-  const breakdown: SoaplinessBreakdown = {
+  const breakdown: ScoreBreakdown = {
     class: {
       value: soapClass.name,
-      interpretation: soapClass.description,
       score: soapClass.score
     },
     color: {
       value: dominantColorCategory,
-      interpretation: COLOR_SCORING[dominantColorCategory as keyof typeof COLOR_SCORING].interpretation,
       score: COLOR_SCORING[dominantColorCategory as keyof typeof COLOR_SCORING].score
     },
     shape: {
       value: shapeQuality,
-      interpretation: SHAPE_SCORING[shapeQuality as keyof typeof SHAPE_SCORING].interpretation,
       score: SHAPE_SCORING[shapeQuality as keyof typeof SHAPE_SCORING].score
     },
     sharpness: {
       value: sharpnessLevel,
-      interpretation: SHARPNESS_SCORING[sharpnessLevel as keyof typeof SHARPNESS_SCORING].interpretation,
       score: SHARPNESS_SCORING[sharpnessLevel as keyof typeof SHARPNESS_SCORING].score
     }
   };

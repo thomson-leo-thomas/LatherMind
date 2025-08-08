@@ -41,6 +41,8 @@ export default function UploadSection({ onAnalysisComplete, isAnalyzing, setIsAn
       // Calculate score
       const { breakdown, finalScore, nickname } = calculateSoaplinessScore(topPrediction, openCVAnalysis);
 
+
+
       const result: AnalysisResult = {
         predictions,
         topPrediction,

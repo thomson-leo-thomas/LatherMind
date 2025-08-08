@@ -10,6 +10,8 @@ interface ResultsSectionProps {
 
 export default function ResultsSection({ result, onGenerateCertificate, onAnalyzeAnother }: ResultsSectionProps) {
   const { predictions, breakdown, finalScore, nickname, openCVAnalysis } = result;
+  
+
 
   const shareOnWhatsApp = () => {
     const message = `🧼 My soap got a Soapliness Score of ${finalScore}/100! Check out LatherMind - AI-powered soap analysis at ${window.location.href}`;
