@@ -3,7 +3,8 @@
 
 # LatherMind - AI Soap Analysis Application 🎯
 
-
+hosted at
+https://lathermind.onrender.com/
 ## Basic Details
 
 
@@ -77,7 +78,7 @@ Teachable Machine - Custom model integration
   **Responsive Design**: Optimized for desktop and mobile devices
 
 ### Implementation
- Installation
+Installation
 Clone the repository
 Install dependencies
 npm install
@@ -104,46 +105,79 @@ Image Sharpness (15%) - Laplacian variance calculation
 
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+https://drive.google.com/file/d/1K2Lbt2rLxOkFzzlzoMfbxzbrwlRTu4Zm/view?usp=drivesdk
+https://drive.google.com/file/d/1K35dA3Bd8Pf02XSZxBWnoOI1DbcAu9Oy/view?usp=drivesdk
+the training phase
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
+https://drive.google.com/file/d/1JszXWO9rosHHyqlTxWJvV-ahjglRZJFq/view?usp=drivesdk
 
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+https://drive.google.com/file/d/1JpEmx1RkDiSXiZudyB8ZbyKtfdrQPEzZ/view?usp=drivesdk
+How LatherMind Works (Step by Step)
+
+From the video/demo flow, here’s what’s happening when someone uses LatherMind:
+
+1. User Chooses an Input
+
+They either upload a soap image or use the live camera.
+
+The app instantly displays the original photo in the Live Preview Panel.
+
+
+
+2. ML Classification (Teachable Machine + TensorFlow.js)
+
+The image is sent to a pre-trained ML model (hosted right in the browser).
+
+The model predicts one of three classes:
+🧼 Brick of Purity (Bar Soap)
+🧴 Potion of Cleanliness (Liquid Soap)
+🧽 Soap Doppelgänger (Not Soap)
+
+A confidence graph shows the probability of each result.
+
+
+
+3. OpenCV.js Image Processing
+
+The same image is analyzed for visual metrics:
+
+Color Histogram → Determines the dominant colors and matches them to the Color Interpretation Table.
+
+Canny Edge Detection → Finds the soap’s edges to check shape precision.
+
+Contour Analysis → Rates the smoothness of the soap’s outline.
+
+Laplacian Variance → Measures image sharpness (blurry vs. crisp).
+
+
+
+
+4. Soapliness Index™ Calculation
+
+Each analysis result contributes points:
+
+finalScore = classScore + colorScore + shapeScore + sharpnessScore;
+
+The total is your Soapliness Score (0–100).
+
+
+
+5. Results Display
+
+Breakdown table shows exactly how each factor scored.
+
+Processed image views (Binary Mask, Edges, Histogram) are shown side-by-side.
+
+A PNG certificate is generated (via HTML2Canvas) so you can brag about your soap’s glory on WhatsApp or anywhere else.
 
 # Additional Demos
-[Add any extra demo materials/links]
+https://drive.google.com/file/d/1JpEmx1RkDiSXiZudyB8ZbyKtfdrQPEzZ/view?usp=drivesdk
 
+Note: All commits made under the two email addresses associated with this repository are by me. Both emails are my own, and no other individual has access to them.
 
 ## 🐛 Known Issues
 
