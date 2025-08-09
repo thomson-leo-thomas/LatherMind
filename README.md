@@ -70,12 +70,12 @@ Teachable Machine - Custom model integration
 
 ## 🧼 Features
 
-  **AI-Powered Soap Classification**: Uses TensorFlow.js with Teachable Machine models to identify soap types
-  **Advanced Image Processing**: OpenCV.js integration for color analysis, edge detection, and shape assessment
-  **Real-time Analysis**: Browser-based processing for instant results
-  **4-Column Image Processing Panel**: Original Image, Binary Mask, Canny Edges, and Color Histogram visualization
-  **Downloadable Certificates**: Generate shareable PNG certificates with scoring details
-  **Responsive Design**: Optimized for desktop and mobile devices
+  AI-Powered Soap Classification**: Uses TensorFlow.js with Teachable Machine models to identify soap types
+  Advanced Image Processing**: OpenCV.js integration for color analysis, edge detection, and shape assessment
+  Real-time Analysis**: Browser-based processing for instant results
+  4-Column Image Processing Panel**: Original Image, Binary Mask, Canny Edges, and Color Histogram visualization
+  Downloadable Certificates**: Generate shareable PNG certificates with scoring details
+  Responsive Design**: Optimized for desktop and mobile devices
 
 ### Implementation
 Installation
