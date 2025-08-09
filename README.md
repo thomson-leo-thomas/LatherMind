@@ -191,7 +191,67 @@ Processed image views (Binary Mask, Edges, Histogram) are shown side-by-side.
 A PNG certificate is generated (via HTML2Canvas) so you can brag about your soap’s glory on WhatsApp or anywhere else.
 
 # Additional Demos
-https://drive.google.com/file/d/1KO6RGzLLUisgn01sVcITNS7t5Op70qs4/view?usp=drivesdk
+
+https://drive.google.com/file/d/1KPwMTwjl2crzxi9imuxYXmXQFvAVCAQy/view?usp=drivesdk
+
+How Teachable Machine Works in LatherMind
+
+Teachable Machine is Google’s no-code tool for training machine learning models. In your project, it’s the “brain” that figures out what kind of soap it’s looking at.
+
+How it works in general:
+
+1. Image Collection & Labeling – You feed Teachable Machine example images, grouped into categories (called “classes”).
+
+
+2. Model Training – Behind the scenes, it uses a convolutional neural network (CNN) to learn the visual patterns that separate each class.
+
+
+3. Export – Once trained, you can export the model for web use (model.json + metadata.json + weights.bin).
+
+
+
+
+
+How you used it in LatherMind:
+
+1. Created 3 Classes:
+
+🧼 Brick of Purity — bar soap
+
+🧴 Potion of Cleanliness — liquid soap
+
+🧽 Soap Doppelgänger — not soap (to catch imposters)
+
+
+
+2. Trained the Model:
+
+Uploaded multiple images for each class to Teachable Machine.
+
+Made sure to include different angles, lighting, and backgrounds so the model could recognise soap in various real-world conditions.
+
+
+
+3. Exported for Web:
+
+Downloaded the TensorFlow.js model files (model.json, metadata.json, weights.bin).
+
+
+
+4. Integrated into LatherMind:
+
+Loaded the model in-browser with TensorFlow.js.
+
+When the user uploads or streams an image, the model runs inference in real time.
+
+It outputs probabilities for each class, which are displayed in your Confidence Graph.
+
+
+
+5. Feeds Into Scoring:
+
+The predicted class gives a Class Score, which is combined with OpenCV’s colour, shape, and sharpness analysis to produce the final Soapliness Index™.
+
 
 Note: All commits made under the two email addresses associated with this repository are by me. Both emails are my own, and no other individual has access to them.
 
