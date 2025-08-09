@@ -12,7 +12,8 @@
 
 ### Project Description
 LatherMind is the world’s first AI-powered soap evaluation platform — yes, we rate soap. 🧼🚀
-Classifies bar or liquid, then uses machine learning + OpenCV to analyze colour, shape, and sharpness, delivering a Soapliness Score with an official certificate.
+Classifies bar or liquid, then uses machine learning + OpenCV to analyze colour, shape, and sharpness, delivering a Soapliness Score with an official frame-worthy certificate— perfect for shamelessly flexing to friends, rivals, and random strangers online.
+
 Because hygiene deserved its own moon landing.
 
 ### The Problem (that doesn't exist )
@@ -24,7 +25,7 @@ And yet…
 Humanity still has no precise, scientific way to know if a bar of soap or bottle of hand wash is truly living up to its potential.
 
 This isn’t just a gap in hygiene.
-It’s a gap in human progress.
+It’s a gap in human progress -and in our deep, primal urge to flex. Because if there’s one thing humans love more than staying clean, it’s showing off how clean their soap game is
 
 ### The Solution that nobody asked for(But You’ll Brag About Anyway)
 We pointed cutting-edge tech at… soap.
@@ -51,8 +52,8 @@ Here’s the mission plan:
 
 
 
-End result?
-A certificate proving your soap is objectively legendary.
+The grand finale?
+A share-worthy, flex-worthy, frame-it-on-your-wall-worthy certificate proving your soap is objectively legendary — and making every other bathroom jealous.
 
 ## Technical Details
 ### Technologies/Components Used
