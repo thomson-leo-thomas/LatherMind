@@ -116,7 +116,7 @@ Shape Analysis (20%) - Edge clarity and contour smoothness
 Image Sharpness (15%) - Laplacian variance calculation
 
 
-# Screenshots (Add at least 3)
+# Screenshots 
 https://drive.google.com/file/d/1K2Lbt2rLxOkFzzlzoMfbxzbrwlRTu4Zm/view?usp=drivesdk
 the main character
 https://drive.google.com/file/d/1K35dA3Bd8Pf02XSZxBWnoOI1DbcAu9Oy/view?usp=drivesdk
