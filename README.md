@@ -3,8 +3,7 @@
 
 # LatherMind - AI Soap Analysis Application 🎯
 
-hosted at
-https://lathermind.onrender.com/
+
 ## Basic Details
 
 
@@ -119,6 +118,7 @@ Image Sharpness (15%) - Laplacian variance calculation
 
 # Screenshots (Add at least 3)
 https://drive.google.com/file/d/1K2Lbt2rLxOkFzzlzoMfbxzbrwlRTu4Zm/view?usp=drivesdk
+the main character
 https://drive.google.com/file/d/1K35dA3Bd8Pf02XSZxBWnoOI1DbcAu9Oy/view?usp=drivesdk
 the training phase
 https://drive.google.com/file/d/1KMNZldRPhiUedka3MKjDdCNypV6EYG4-/view?usp=drivesdk
@@ -254,6 +254,9 @@ The predicted class gives a Class Score, which is combined with OpenCV’s colou
 
 
 Note: All commits made under the two email addresses associated with this repository are by me. Both emails are my own, and no other individual has access to them.
+
+hosted at
+https://lathermind.onrender.com/
 
 ## 🐛 Known Issues
 
