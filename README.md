@@ -108,7 +108,10 @@ Image Sharpness (15%) - Laplacian variance calculation
 https://drive.google.com/file/d/1K2Lbt2rLxOkFzzlzoMfbxzbrwlRTu4Zm/view?usp=drivesdk
 https://drive.google.com/file/d/1K35dA3Bd8Pf02XSZxBWnoOI1DbcAu9Oy/view?usp=drivesdk
 the training phase
-
+https://drive.google.com/file/d/1KMNZldRPhiUedka3MKjDdCNypV6EYG4-/view?usp=drivesdk
+the certificate
+https://drive.google.com/file/d/1KKLa_ZQ_rTxaUn-anPHqxhlw76F84SBf/view?usp=drivesdk
+the home page
 # Diagrams
 https://drive.google.com/file/d/1JszXWO9rosHHyqlTxWJvV-ahjglRZJFq/view?usp=drivesdk
 
