@@ -59,22 +59,35 @@ A certificate proving your soap is objectively legendary.
 ### Technologies/Components Used
 Frontend
 React 18 - Modern UI framework
+
 TypeScript - Type-safe development
+
 Vite - Fast build tool and dev server
+
 Tailwind CSS - Utility-first styling
+
 shadcn/ui - Accessible UI components
+
 Machine Learning & Computer Vision
+
 TensorFlow.js - Browser-based ML inference
+
 OpenCV.js - Computer vision processing
+
 Teachable Machine - Custom model integration
 
 ## 🧼 Features
 
   AI-Powered Soap Classification**: Uses TensorFlow.js with Teachable Machine models to identify soap types
+  
   Advanced Image Processing**: OpenCV.js integration for color analysis, edge detection, and shape assessment
+  
   Real-time Analysis**: Browser-based processing for instant results
+  
   4-Column Image Processing Panel**: Original Image, Binary Mask, Canny Edges, and Color Histogram visualization
+  
   Downloadable Certificates**: Generate shareable PNG certificates with scoring details
+  
   Responsive Design**: Optimized for desktop and mobile devices
 
 ### Implementation
@@ -178,7 +191,7 @@ Processed image views (Binary Mask, Edges, Histogram) are shown side-by-side.
 A PNG certificate is generated (via HTML2Canvas) so you can brag about your soap’s glory on WhatsApp or anywhere else.
 
 # Additional Demos
-https://drive.google.com/file/d/1JpEmx1RkDiSXiZudyB8ZbyKtfdrQPEzZ/view?usp=drivesdk
+https://drive.google.com/file/d/1KO6RGzLLUisgn01sVcITNS7t5Op70qs4/view?usp=drivesdk
 
 Note: All commits made under the two email addresses associated with this repository are by me. Both emails are my own, and no other individual has access to them.
 
