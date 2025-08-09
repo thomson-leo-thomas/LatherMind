@@ -258,22 +258,18 @@ Note: All commits made under the two email addresses associated with this reposi
 
 🧠 What I Learned
 
-Building LatherMind taught me how to blend AI, computer vision, and front-end development into a single, interactive web app. I learned how to train a custom Teachable Machine model, export it for TensorFlow.js, and run predictions entirely in the browser — no backend required. I also dove deep into OpenCV.js, using techniques like colour histograms, contour detection, and Laplacian variance to turn pixels into measurable soap metrics. On the UI side, I got comfortable integrating live camera feeds, visualising data in confidence graphs, and generating shareable PNG certificates.
+Building LatherMind taught me how to blend AI, computer vision, and front-end development into a single, interactive web app. I learned how to train a custom Teachable Machine model, export it for TensorFlow.js. I also dove deep into OpenCV.js, using techniques like colour histograms, contour detection, and Laplacian variance to turn pixels into measurable soap metrics. On the UI side, I got comfortable integrating live camera feeds, visualising data in confidence graphs, and generating shareable PNG certificates.
 
 
+🚀 What’s Next
 
+LatherMind is just warming up. Next, I’d supercharge it with a beefier dataset for razor-sharp accuracy, add AR overlays for live, in-your-face scoring, and launch a global Soapliness Leaderboard so you can finally prove your soap is superior — and rub it in your friends’ faces. Oh, and every rating comes with a flex-worthy, shareable certificate, because what’s the point of science if you can’t brag about it?
 
-🚀 What I Could Do
+💡 Why It Matters
 
-With more time, I could expand LatherMind into a multi-product hygiene evaluator — shampoo smoothness, toothpaste shine, maybe even towel fluffiness. I could also add a larger dataset for more accurate classification, integrate augmented reality overlays for live scoring, and let users challenge friends in a global “Soapliness Leaderboard.”
+This project proved I can take a ridiculous idea and engineer it into something polished, playful, and unforgettable — blending real AI chops with unapologetic creativity. It’s not just a product; it’s a conversation starter, a smile generator, and a reminder that innovation doesn’t have to be boring.
 
-
-
-
-Why this matters:
-It proved I can take a quirky idea and turn it into a polished, working product that mixes real tech skills with playful creativity — and that’s exactly the kind of project people remember.
-
-Because if we can rate soap, we can rate anything. 🧼🚀
+Because if we can rate soap and hand wash, we can rate anything — and let’s be honest, humans love to flex. This is just the beginning. 🧼🚀
 
 
 
